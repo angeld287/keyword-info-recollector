@@ -1,0 +1,11 @@
+{
+  "name": "keyword-info-recollector-server",
+  "version": "1.0.0",
+  "description": "keyword-info-recollector backend web server",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Angel Angeles",
+  "license": "ISC"
+}
