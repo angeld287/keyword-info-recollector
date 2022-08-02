@@ -20,6 +20,7 @@ class Locals {
 
         const is_user_logged = 'isUserLogged';
         const gq_email = 'email';
+        const user_is_not_authorized = 'You are not Authorized to access this API !!';
 
         //allow origin cors
         const url = 'http://localhost:3000';
@@ -30,7 +31,8 @@ class Locals {
             port,
             is_user_logged,
             gq_email,
-            url
+            url,
+            user_is_not_authorized
         }
     }
 
