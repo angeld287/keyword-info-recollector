@@ -18,9 +18,11 @@ class Locals {
         const appSecret = process.env.APP_SECRET || 'secret_key';
         const apiPrefix = process.env.API_PREFIX || 'api';
 
-        const is_user_logged = 'isUserLogged';
-        const gq_email = 'email';
-        const user_is_not_authorized = 'You are not Authorized to access this API !!';
+        const mongoUrl = `mongodb+srv://${process.env.MG_USERNAME}:${process.env.MG_PASS}@${process.env.MG_HOST}/${process.env.MG_DB}?retryWrites=true&w=majority`;
+
+        const isUserLogged = 'isUserLogged';
+        const gqEmail = 'email';
+        const userIsNotAuthorized = 'You are not Authorized to access this API !!';
 
         //allow origin cors
         const url = 'http://localhost:3000';
@@ -29,10 +31,11 @@ class Locals {
             apiPrefix,
             appSecret,
             port,
-            is_user_logged,
-            gq_email,
+            isUserLogged,
+            gqEmail,
             url,
-            user_is_not_authorized
+            userIsNotAuthorized,
+            mongoUrl
         }
     }
 
