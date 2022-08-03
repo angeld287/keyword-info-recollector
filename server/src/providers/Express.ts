@@ -6,14 +6,17 @@
 
 import * as express from 'express';
 import Locals from './Locals';
-import Routes from './Routes';
+import ApolloServerConf from './ApolloServer';
 import Bootstrap from '../middlewares/Kernel';
+import schema from '../graphql/schema';
+import { createServer } from 'http';
 
 class Express {
     /**
     * Create the express object
     */
     public express: express.Application;
+    public apolloServer: any;
 
     /**
      * Initializes the express server
@@ -21,23 +24,25 @@ class Express {
     constructor() {
         this.express = express();
 
+        this.mountApolloServer();
         this.mountMiddlewares();
-        this.mountRoutes();
+
     }
 
     /**
      * Mounts all the defined middlewares
      */
     private mountMiddlewares(): void {
-        this.express = Bootstrap.init(this.express);
+        const { express } = this
+        this.express = Bootstrap.init(express);
+        this.apolloServer.applyMiddleware({ express, path: '/graphql' });
     }
 
     /**
      * Mounts all the defined routes
      */
-    private mountRoutes(): void {
-        //this.express = Routes.mountWeb(this.express);
-        this.express = Routes.mountApi(this.express);
+    private mountApolloServer(): void {
+        this.apolloServer = ApolloServerConf.Add(schema);
     }
 
     /**
@@ -45,9 +50,10 @@ class Express {
      */
     public init(): any {
         const port: number = Locals.config().port;
+        const httpServer = createServer(this.express);
 
         // Start the server on the specified port
-        this.express.listen(port, () => {
+        httpServer.listen(port, () => {
             return console.log('\x1b[33m%s\x1b[0m', `Server :: Running @ 'http://localhost:${port}'`);
         }).on('error', (_error) => {
             return console.log('Error: ', _error.message);
