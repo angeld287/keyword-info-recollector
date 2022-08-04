@@ -24,6 +24,8 @@ class Locals {
         const gqEmail = 'email';
         const userIsNotAuthorized = 'You are not Authorized to access this API !!';
 
+        const authEncryptionSalt = ''
+
         //allow origin cors
         const url = 'http://localhost:3000';
 
@@ -35,7 +37,8 @@ class Locals {
             gqEmail,
             url,
             userIsNotAuthorized,
-            mongoUrl
+            mongoUrl,
+            authEncryptionSalt
         }
     }
 

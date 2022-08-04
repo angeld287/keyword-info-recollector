@@ -8,6 +8,7 @@ class ApolloServerConf {
 
     constructor() {
         this.mongoHelper = new MongoHelper()
+        this.mongoHelper.initiateMongoConnection();
     }
 
 
