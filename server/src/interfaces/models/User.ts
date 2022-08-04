@@ -18,7 +18,7 @@ export interface IUser extends Express.User {
     userName: string;
 }
 
-export const UserSchema = new mongoose.Schema<IUser>(
+const UserSchema = new mongoose.Schema<IUser>(
     {
         email: {
             type: String,
@@ -46,4 +46,4 @@ export const UserSchema = new mongoose.Schema<IUser>(
     }
 );
 
-export default IUser;
+export default mongoose.model('User', UserSchema);;
