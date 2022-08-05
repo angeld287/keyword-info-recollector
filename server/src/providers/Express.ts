@@ -1,6 +1,6 @@
 /**
  * Primary file for your Clustered API Server
- *
+ * https://www.universal-tutorial.com/graphql-tutorials/crud-with-graphql-nodejs-mongo-typescript
  * @author Angel Angeles <aangeles@litystyles.com>
  */
 
@@ -15,14 +15,14 @@ class Express {
     /**
     * Create the express object
     */
-    public express: express.Application;
+    public app: express.Application;
     public apolloServer: any;
 
     /**
      * Initializes the express server
      */
     constructor() {
-        this.express = express();
+        this.app = express();
 
         this.mountApolloServer();
         this.mountMiddlewares();
@@ -33,9 +33,9 @@ class Express {
      * Mounts all the defined middlewares
      */
     private mountMiddlewares(): void {
-        const { express } = this
-        this.express = Bootstrap.init(express);
-        this.apolloServer.applyMiddleware({ express, path: '/graphql' });
+        const { app } = this
+        this.app = Bootstrap.init(app);
+        this.apolloServer.applyMiddleware({ app, path: '/graphql' });
     }
 
     /**
@@ -50,7 +50,7 @@ class Express {
      */
     public init(): any {
         const port: number = Locals.config().port;
-        const httpServer = createServer(this.express);
+        const httpServer = createServer(this.app);
 
         // Start the server on the specified port
         httpServer.listen(port, () => {

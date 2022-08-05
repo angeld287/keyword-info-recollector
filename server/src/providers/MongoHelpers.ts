@@ -1,4 +1,4 @@
-const User = require('../models/users');
+import User from '../interfaces/models/User';
 import mongoose = require('mongoose');
 import * as jwt from 'jsonwebtoken';
 import Locals from './Locals';

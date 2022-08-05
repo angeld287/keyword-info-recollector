@@ -13,7 +13,6 @@ import * as session from 'express-session';
 
 import Log from './Log';
 import Locals from '../providers/Locals';
-import Passport from '../providers/Passport';
 import CORS from './CORS';
 //import Passport from '../providers/Passport';
 
@@ -52,9 +51,6 @@ class Http {
 
 		// Enables the "gzip" / "deflate" compression for response
 		_express.use(compress());
-
-		// Loads the passport configuration
-		_express = Passport.mountPackage(_express);
 
 		return _express;
 	}
