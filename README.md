@@ -3,6 +3,8 @@
 ## Server Technologies:
 
 - MongoDB
+- GraphQL
+- Apollo Server
 - NodeJS
 - Mocha
 
