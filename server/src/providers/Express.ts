@@ -1,6 +1,6 @@
 /**
  * Primary file for your Clustered API Server
- * https://www.universal-tutorial.com/graphql-tutorials/crud-with-graphql-nodejs-mongo-typescript
+ * 
  * @author Angel Angeles <aangeles@litystyles.com>
  */
 

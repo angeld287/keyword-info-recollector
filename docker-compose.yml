@@ -1,0 +1,29 @@
+# docker-compose.yml
+version: "1"
+services:
+  #client:
+  #    build: ./client
+  #    working_dir: /app
+  #    ports:
+  #        - "8082:80"
+
+  server:
+    build: ./server
+    depends_on:
+      - mongoh
+    working_dir: /usr/src/app
+    environment:
+      DATABASE_URL: mongodb://admin:admin@mongoh/db?retryWrites=true&w=majority
+      PORT: 3000
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server:/usr/src/app/
+
+  mongoh:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: db

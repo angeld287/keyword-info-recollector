@@ -13,12 +13,16 @@ class Locals {
      * throughout the app's runtime
      */
     public static config(): any {
-        const port = process.env.PORT || 3001;
+        const port = process.env.PORT || 3002;
 
         const appSecret = process.env.APP_SECRET || 'secret_key';
         const apiPrefix = process.env.API_PREFIX || 'api';
 
-        const mongoUrl = `mongodb+srv://${process.env.MG_USERNAME}:${process.env.MG_PASS}@${process.env.MG_HOST}/${process.env.MG_DB}?retryWrites=true&w=majority`;
+        const mgUsername = process.env.MG_USERNAME || 'admin'
+        const mgPass = process.env.MG_PASS || 'admin'
+        const mgHost = process.env.MG_HOST || '172.17.0.2'
+        const mgDb = process.env.MG_DB || 'db'
+        const mongoUrl = process.env.DATABASE_URL || `mongodb://${mgUsername}:${mgPass}@${mgHost}/${mgDb}?retryWrites=true&w=majority`;
 
         const isUserLogged = 'isUserLogged';
         const gqEmail = 'email';
