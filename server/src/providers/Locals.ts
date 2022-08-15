@@ -20,9 +20,10 @@ class Locals {
 
         const mgUsername = process.env.MG_USERNAME || 'admin'
         const mgPass = process.env.MG_PASS || 'admin'
-        const mgHost = process.env.MG_HOST || '172.17.0.2'
+        const mgHost = process.env.MG_HOST || 'localhost'
         const mgDb = process.env.MG_DB || 'db'
-        const mongoUrl = process.env.DATABASE_URL || `mongodb://${mgUsername}:${mgPass}@${mgHost}/${mgDb}?retryWrites=true&w=majority`;
+        const mgPort = process.env.MG_PORT || '27017'
+        const mongoUrl = process.env.DATABASE_URL || `mongodb://${mgUsername}:${mgPass}@${mgHost}:${mgPort}/${mgDb}?retryWrites=true&w=majority`;
 
         const isUserLogged = 'isUserLogged';
         const gqEmail = 'email';

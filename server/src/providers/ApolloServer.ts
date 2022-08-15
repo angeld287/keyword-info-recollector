@@ -1,6 +1,7 @@
 import { ApolloServer } from 'apollo-server-express';
 import { GraphQLSchema } from 'graphql';
 import depthLimit = require('graphql-depth-limit');
+import Log from '../middlewares/Log';
 import { MongoHelper } from './mongoHelpers';
 
 class ApolloServerConf {
@@ -13,17 +14,22 @@ class ApolloServerConf {
 
 
     public Add(schema: GraphQLSchema): ApolloServer {
-        const config = {
-            schema,
-            validationRules: [depthLimit(7)],
-            introspection: true,
-            playground: true,
-            context: async ({ req }) => {
-                return await this.mongoHelper.validateUser(req);
-            },
-        };
+        try {
+            const config = {
+                schema,
+                validationRules: [depthLimit(7)],
+                introspection: true,
+                playground: true,
+                context: async ({ req }) => {
+                    return await this.mongoHelper.validateUser(req);
+                },
+            };
 
-        return new ApolloServer(config);
+            return new ApolloServer(config);
+        } catch (error) {
+            Log.error('Error Creating Apollo Server' + error);
+        }
+
     }
 }
 
