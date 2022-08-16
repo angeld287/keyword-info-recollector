@@ -34,7 +34,6 @@ const resolvers: IResolvers = {
       const { password, userName }: IUser = inputObject.input;
 
       const user = await userController.findUserByUsername(userName, ctx);
-      console.log(user);
 
       if (!user) throw new Error("User not found");
 

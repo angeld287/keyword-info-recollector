@@ -6,12 +6,13 @@
 
 import { Express } from 'express';
 import mongoose = require("mongoose");
+import passport = require('passport');
 
 export interface IUser extends Express.User {
     id: string;
     email: string;
     phoneNumber?: string;
-    password?: string;
+    password: string;
 
     fullname: string;
     gender: string;
@@ -44,7 +45,11 @@ const UserSchema = new mongoose.Schema<IUser>(
         },
         userName: {
             type: String,
-            required: false
+            required: true
+        },
+        password: {
+            type: String,
+            required: true
         }
     },
     {
