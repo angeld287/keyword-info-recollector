@@ -18,12 +18,11 @@ class Locals {
         const appSecret = process.env.APP_SECRET || 'secret_key';
         const apiPrefix = process.env.API_PREFIX || 'api';
 
-        const mgUsername = process.env.MG_USERNAME || 'admin'
-        const mgPass = process.env.MG_PASS || 'admin'
         const mgHost = process.env.MG_HOST || 'localhost'
         const mgDb = process.env.MG_DB || 'db'
         const mgPort = process.env.MG_PORT || '27017'
-        const mongoUrl = process.env.DATABASE_URL || `mongodb://${mgUsername}:${mgPass}@${mgHost}:${mgPort}/${mgDb}?retryWrites=true&w=majority`;
+
+        const mongoUrl = process.env.DATABASE_URL || `mongodb://${mgHost}:${mgPort}/${mgDb}`;
 
         const isUserLogged = 'isUserLogged';
         const gqEmail = 'email';
