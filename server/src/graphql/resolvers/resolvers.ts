@@ -36,6 +36,8 @@ const resolvers: IResolvers = {
 
       const hashedPassword = Encryptions.hash(password);
 
+      if (user.password !== hashedPassword) throw new Error("Invalid password");
+
       return user
     },
   },
