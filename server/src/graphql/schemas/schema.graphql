@@ -19,11 +19,24 @@ type Mutation {
   updateUser(id: String, input: InputUser!): User
 }
 
+type Mutation {
+  registerUser(input: InputUser!): User
+}
+
+type Mutation {
+  loginUser(input: InputUserCredentials!): User
+}
+
 input InputUser {
   email: String
   phoneNumber: String
   fullname: String
   gender: String
+  userName: String
+  password: String
+}
+
+input InputUserCredentials {
   userName: String
   password: String
 }
