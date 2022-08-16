@@ -20,6 +20,12 @@ export interface IUser extends Express.User {
 
 const UserSchema = new mongoose.Schema<IUser>(
     {
+        id: {
+            type: String,
+            primaryKey: true,
+            autoIncrement: true,
+            allowNull: false,
+        },
         email: {
             type: String,
             required: true

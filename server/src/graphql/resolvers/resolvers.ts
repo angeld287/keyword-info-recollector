@@ -34,8 +34,9 @@ const resolvers: IResolvers = {
       const { password, userName }: IUser = inputObject.input;
 
       const user = await userController.findUserByUsername(userName, ctx);
+      console.log(user);
 
-      if (user.length === 0) throw new Error("User not found");
+      if (!user) throw new Error("User not found");
 
       const hashedPassword = Encryptions.hash(password);
 
