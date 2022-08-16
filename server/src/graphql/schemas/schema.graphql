@@ -4,6 +4,7 @@ type User {
   fullname: String
   gender: String
   userName: String
+  password: String
 }
 
 type Query {
@@ -24,4 +25,5 @@ input InputUser {
   fullname: String
   gender: String
   userName: String
+  password: String
 }
