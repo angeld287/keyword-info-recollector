@@ -5,6 +5,7 @@ import Locals from '../../providers/Locals';
 import UserController from '../../controllers/UserController';
 import { IResolvers } from 'apollo-server-express';
 import Encryptions from '../../providers/Encryptions';
+import { IUser } from '../../interfaces/models/User';
 
 const userController = new UserController();
 
@@ -30,9 +31,11 @@ const resolvers: IResolvers = {
       return userController.addUser({ ...rest, password: hashedPassword }, ctx);
     },
     loginUser: async (_, inputObject, ctx: IContext) => {
-      const { password, username } = inputObject.input;
+      const { password, userName }: IUser = inputObject.input;
 
-      const user = await userController.findUserByUsername(username, ctx);
+      const user = await userController.findUserByUsername(userName, ctx);
+
+      if (user.length === 0) throw new Error("User not found");
 
       const hashedPassword = Encryptions.hash(password);
 
