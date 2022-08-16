@@ -15,6 +15,10 @@ class UserController {
             }
         );
     }
+
+    async findUserByUsername(userName: string, ctx: IContext) {
+        return await Users.findOne({ userName });
+    }
 }
 
 export default UserController;

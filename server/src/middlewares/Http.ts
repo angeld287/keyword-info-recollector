@@ -35,12 +35,14 @@ class Http {
 		 * Note: You can also add redis-store
 		 * into the options object.
 		 */
-		const options = {
+		const options: session.SessionOptions = {
 			resave: true,
 			saveUninitialized: true,
 			secret: Locals.config().appSecret,
 			cookie: {
-				maxAge: 1209600000 // two weeks (in ms)
+				maxAge: 1209600000, // two weeks (in ms)
+				httpOnly: true,
+				sameSite: "lax", //csrf security
 			}
 		};
 
