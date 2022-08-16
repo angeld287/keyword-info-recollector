@@ -29,6 +29,15 @@ const resolvers: IResolvers = {
 
       return userController.addUser({ ...rest, password: hashedPassword }, ctx);
     },
+    loginUser: async (_, inputObject, ctx: IContext) => {
+      const { password, username } = inputObject.input;
+
+      const user = await userController.findUserByUsername(username, ctx);
+
+      const hashedPassword = Encryptions.hash(password);
+
+      return user
+    },
   },
 };
 
