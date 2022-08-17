@@ -4,10 +4,9 @@ import { VerifyAuthorization } from "../providers/Auth.Decorator";
 
 class GoogleSearchController {
 
-    /*@VerifyAuthorization
-    async search(inputObject: any, ctx: IContext): Promise<GoogleSearchResult> {
+    async search(inputObject: any, ctx: IContext): Promise<Array<GoogleSearchResult> | Error> {
 
-        return {
+        return [{
             position: 0,
             kind: "string",
             title: "string",
@@ -19,8 +18,8 @@ class GoogleSearchController {
             cacheId: "string",
             formattedUrl: "string",
             htmlFormattedUrl: "string",
-        };
-    }*/
+        }];
+    }
 }
 
 export default GoogleSearchController;

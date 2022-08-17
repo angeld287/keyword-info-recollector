@@ -6,8 +6,10 @@ import UserController from '../../controllers/UserController';
 import { IResolvers } from 'apollo-server-express';
 import Encryptions from '../../providers/Encryptions';
 import { IUser } from '../../interfaces/models/User';
+import KeywordController from '../../controllers/KeywordController';
 
 const userController = new UserController();
+const keywordController = new KeywordController();
 
 const resolvers: IResolvers = {
   Query: {
@@ -17,6 +19,9 @@ const resolvers: IResolvers = {
   },
 
   Mutation: {
+    addKeyword: (_, inputObject, ctx: IContext) => {
+      return keywordController.addKeyword(inputObject, ctx);
+    },
     addUser: (_, inputObject, ctx: IContext) => {
       return userController.addUser(inputObject, ctx);
     },

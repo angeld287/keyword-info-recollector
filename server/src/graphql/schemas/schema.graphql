@@ -7,6 +7,10 @@ type User {
   password: String
 }
 
+type Keyword {
+  name: String
+}
+
 type Query {
   token(email: String!): String!
 }
@@ -27,6 +31,10 @@ type Mutation {
   loginUser(input: InputUserCredentials!): User
 }
 
+type Mutation {
+  addKeyword(input: InputKeyword!): Keyword
+}
+
 input InputUser {
   email: String
   phoneNumber: String
@@ -39,4 +47,8 @@ input InputUser {
 input InputUserCredentials {
   userName: String
   password: String
+}
+
+input InputKeyword {
+  name: String
 }
