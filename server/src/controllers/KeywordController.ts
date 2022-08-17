@@ -5,6 +5,7 @@ import Keywords from '../interfaces/models/Keyword';
 
 class KeywordController {
 
+    @VerifyAuthorization
     async addKeyword(inputObject: any, ctx: IContext): Promise<any> {
         return Keywords.create(inputObject.input).then((keywordInfo: any) => {
             return keywordInfo;
