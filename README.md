@@ -13,3 +13,7 @@ This is a application used to find SEO posts content. The purpose of this applic
 ## Client Technologies
 
 - FrontEnd Framework: material-ui
+
+https://dev.to/franciscomendes10866/graphql-authentication-and-authorization-in-nodejs-hm4
+
+https://www.universal-tutorial.com/graphql-tutorials/crud-with-graphql-nodejs-mongo-typescript
