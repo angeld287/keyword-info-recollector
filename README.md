@@ -6,7 +6,7 @@ This is a application used to find SEO posts content. The purpose of this applic
 
 - MongoDB
 - GraphQL
-- Apollo Server
+- Apollo Server: incrusted as node js middleware.
 - NodeJS
 - Mocha
 
